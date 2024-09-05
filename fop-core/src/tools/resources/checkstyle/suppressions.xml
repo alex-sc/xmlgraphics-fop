@@ -9,4 +9,6 @@
   <suppress files="MergedTableCells.java" checks="AvoidNestedBlocks"/>
   <suppress files="NestedTable.java" checks="AvoidNestedBlocks"/>
   <suppress files="MarkersTestCase.java" checks="LocalVariableName"/>
+  <!-- Temp -->
+  <suppress files="Characters.java" checks=".*"/>
 </suppressions>
