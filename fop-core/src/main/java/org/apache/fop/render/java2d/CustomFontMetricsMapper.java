@@ -240,9 +240,11 @@ public class CustomFontMetricsMapper extends Typeface implements FontMetricsMapp
     /**
      * {@inheritDoc}
      */
-    public int[][] performPositioning(CharSequence cs, String script, String language, int fontSize, boolean isVertical) {
+    public int[][] performPositioning(CharSequence cs, String script, String language,
+                                      int fontSize, boolean isVertical) {
         if (typeface instanceof Positionable) {
-            return ((Positionable) typeface).performPositioning(cs, script, language, fontSize, isVertical);
+            return ((Positionable) typeface).performPositioning(cs, script, language,
+                    fontSize, isVertical);
         } else {
             return null;
         }
@@ -276,7 +278,8 @@ public class CustomFontMetricsMapper extends Typeface implements FontMetricsMapp
     public CharSequence performSubstitution(CharSequence cs, String script, String language, List associations,
                                             boolean retainControls, boolean isVertical) {
         if (typeface instanceof Substitutable) {
-            return ((Substitutable) typeface).performSubstitution(cs, script, language, associations, retainControls, isVertical);
+            return ((Substitutable) typeface).performSubstitution(cs, script, language, associations,
+                    retainControls, isVertical);
         } else {
             return cs;
         }
@@ -288,7 +291,8 @@ public class CustomFontMetricsMapper extends Typeface implements FontMetricsMapp
     public CharSequence reorderCombiningMarks(CharSequence cs, int[][] gpa,
                                               String script, String language, List associations, boolean isVertical) {
         if (typeface instanceof Substitutable) {
-            return ((Substitutable) typeface).reorderCombiningMarks(cs, gpa, script, language, associations, isVertical);
+            return ((Substitutable) typeface).reorderCombiningMarks(cs, gpa, script, language,
+                    associations, isVertical);
         } else {
             return cs;
         }

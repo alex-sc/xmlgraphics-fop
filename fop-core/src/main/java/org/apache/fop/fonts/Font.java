@@ -464,8 +464,8 @@ public class Font implements Substitutable, Positionable {
     }
 
     /** {@inheritDoc} */
-    public CharSequence performSubstitution(CharSequence cs,
-                                            String script, String language, List associations, boolean retainControls, boolean isVertical) {
+    public CharSequence performSubstitution(CharSequence cs, String script, String language, List associations,
+                                            boolean retainControls, boolean isVertical) {
         if (metric instanceof Substitutable) {
             Substitutable s = (Substitutable) metric;
             return s.performSubstitution(cs, script, language, associations, retainControls, isVertical);
@@ -496,7 +496,8 @@ public class Font implements Substitutable, Positionable {
     }
 
     /** {@inheritDoc} */
-    public int[][] performPositioning(CharSequence cs, String script, String language, int fontSize, boolean isVertical) {
+    public int[][] performPositioning(CharSequence cs, String script, String language,
+                                      int fontSize, boolean isVertical) {
         if (metric instanceof Positionable) {
             Positionable p = (Positionable) metric;
             return p.performPositioning(cs, script, language, fontSize, isVertical);

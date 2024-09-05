@@ -582,7 +582,8 @@ public class MultiByteFont extends CIDFont implements Substitutable, Positionabl
             CharSequence cs, int[][] gpa, String script, String language, List associations, boolean isVertical) {
         if (gdef != null) {
             GlyphSequence igs = mapCharsToGlyphs(cs, associations);
-            GlyphSequence ogs = gdef.reorderCombiningMarks(igs, getUnscaledWidths(igs), gpa, script, language, isVertical);
+            GlyphSequence ogs = gdef.reorderCombiningMarks(igs, getUnscaledWidths(igs), gpa, script,
+                    language, isVertical);
             if (associations != null) {
                 associations.clear();
                 associations.addAll(ogs.getAssociations());

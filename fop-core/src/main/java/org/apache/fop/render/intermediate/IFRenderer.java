@@ -35,7 +35,6 @@ import java.util.Stack;
 
 import javax.xml.transform.stream.StreamResult;
 
-import org.apache.fop.util.CharUtilities;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -99,6 +98,7 @@ import org.apache.fop.render.intermediate.extensions.NamedDestination;
 import org.apache.fop.render.intermediate.extensions.URIAction;
 import org.apache.fop.traits.BorderProps;
 import org.apache.fop.traits.RuleStyle;
+import org.apache.fop.util.CharUtilities;
 
 /**
  * This renderer implementation is an adapter to the {@link IFPainter} interface. It is used
@@ -1082,16 +1082,18 @@ public class IFRenderer extends AbstractPathOrientedRenderer {
 
         if (word.isUpright()) {
             textUtil.flush();
-            int rx = currentIPPosition + word.getParentArea().getBorderAndPaddingWidthStart() + textUtil.getNextStart(s.charAt(0));
+            int rx = currentIPPosition + word.getParentArea().getBorderAndPaddingWidthStart()
+                    + textUtil.getNextStart(s.charAt(0));
             textUtil.setStartPosition(rx, textUtil.starty);
             saveGraphicsState();
             AffineTransform positionTransform = new AffineTransform();
-            positionTransform.rotate(Math.toRadians(-90), (textUtil.startx + word.getAllocIPD() / 2.0) / 1000.0, (textUtil.starty - (font.getAscender() + font.getDescender()) / 2.0) / 1000.0);
+            positionTransform.rotate(Math.toRadians(-90), (textUtil.startx + word.getAllocIPD() / 2.0) / 1000.0,
+                    (textUtil.starty - (font.getAscender() + font.getDescender()) / 2.0) / 1000.0);
             concatenateTransformationMatrix(positionTransform);
         } else if (textUtil.text.length() == 0) {
             // if havn't add other thing, add space
-            int rx = currentIPPosition + word.getParentArea().getBorderAndPaddingWidthStart() +
-                    textUtil.getNextStart(s.isEmpty() ? ' ' : s.charAt(0));
+            int rx = currentIPPosition + word.getParentArea().getBorderAndPaddingWidthStart()
+                    + textUtil.getNextStart(s.isEmpty() ? ' ' : s.charAt(0));
             textUtil.setStartPosition(rx, textUtil.starty);
         }
 
@@ -1113,7 +1115,8 @@ public class IFRenderer extends AbstractPathOrientedRenderer {
         if (word.isUpright()) {
             textUtil.flush();
             // don't known if next is a space, set start point.
-            int rx = currentIPPosition + word.getAllocIPD() + word.getParentArea().getBorderAndPaddingWidthStart() + textUtil.letterSpacesIPD;
+            int rx = currentIPPosition + word.getAllocIPD() + word.getParentArea().getBorderAndPaddingWidthStart()
+                    + textUtil.letterSpacesIPD;
             textUtil.setStartPosition(rx, textUtil.starty);
             restoreGraphicsState();
         }
@@ -1205,7 +1208,7 @@ public class IFRenderer extends AbstractPathOrientedRenderer {
         private int tls;
         private int tws;
         private boolean nextIsSpace;
-        private int letterSpacesIPD = 0;
+        private int letterSpacesIPD;
         private int lastChar = -1;
 
         int getNextStart(char ch) {

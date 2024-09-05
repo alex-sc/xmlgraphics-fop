@@ -206,7 +206,8 @@ public class FlowLayoutManager extends BlockStackingLayoutManager {
         LayoutContext childLC = LayoutContext.newInstance();
         childLC.setStackLimitBP(context.getStackLimitBP());
         childLC.setRefIPD(context.getRefIPD());
-        childLC.setWritingMode(getCurrentPage().getSimplePageMaster().getRegion(Region.FO_REGION_BODY).getWritingMode());
+        childLC.setWritingMode(getCurrentPage().getSimplePageMaster()
+                .getRegion(Region.FO_REGION_BODY).getWritingMode());
         return childLC;
     }
 
