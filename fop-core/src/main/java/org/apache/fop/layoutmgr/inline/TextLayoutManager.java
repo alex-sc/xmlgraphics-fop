@@ -476,7 +476,9 @@ public class TextLayoutManager extends LeafNodeLayoutManager {
         }
 
         private boolean isWordEnd(int mappingIndex) {
-            return mappingIndex == lastIndex || getGlyphMapping(mappingIndex + 1).isSpace;
+            // TODO If is vertical mode and GlyphMapping is hani, return true.
+            return mappingIndex == lastIndex || mapping.isUpright || getGlyphMapping(mappingIndex + 1).isSpace
+                    || getGlyphMapping(mappingIndex + 1).isUpright;
         }
 
         /**

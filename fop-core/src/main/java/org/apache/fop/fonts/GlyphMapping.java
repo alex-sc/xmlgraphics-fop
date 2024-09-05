@@ -191,7 +191,7 @@ public class GlyphMapping {
         return new GlyphMapping(startIndex, endIndex, 0, nLS, ipd, endsWithHyphen, false,
                 breakOpportunityChar != 0, font, level, gpa,
                 !dontOptimizeForIdentityMapping && CharUtilities.isSameSequence(mcs, ics) ? null : mcs.toString(),
-                associations, isVertical);
+                associations, isUprightChar);
     }
 
     private static boolean useKerningAdjustments(final Font font, String script, String language) {
