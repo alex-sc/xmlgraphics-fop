@@ -1378,7 +1378,7 @@ public class TextLayoutManager extends LeafNodeLayoutManager {
         // of its letter spaces;
         boolean suppressibleLetterSpace = mapping.breakOppAfter && !mapping.isHyphenated;
 
-        if (letterSpaceIPD.isStiff()) {
+        if (letterSpaceIPD.isStiff() || (suppressibleLetterSpace && mapping.letterSpaceCount == 0 )) {
             // constant letter spacing
             baseList.add(new KnuthInlineBox(suppressibleLetterSpace
                     ? mapping.areaIPD.getOpt() - letterSpaceIPD.getOpt()
